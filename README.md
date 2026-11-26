@@ -63,7 +63,7 @@ cozy fantasy kingdom village, colorful cottages with round roofs, small castle o
 Negative: `realistic, photo, dark, gloomy, blurry, text, watermark, people, characters, deformed buildings`
 
 ## Workflow
-`workflow/expression_inpaint.json` – Load Image (+ mask) → VAE Encode → Set Latent Noise Mask → KSampler → VAE Decode → ImageCompositeMasked (onto the source) → Save Image.
+`expression_inpaint.json` – Load Image (+ mask) → VAE Encode → Set Latent Noise Mask → KSampler → VAE Decode → ImageCompositeMasked (onto the source) → Save Image.
 
 How to use it:
 1. Load the approved character in **Load Image** (the file is named `source_character.png` in the workflow).

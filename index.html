@@ -82,7 +82,7 @@ section{padding-block:4rem 0; display:grid; gap:1.5rem}
 .diff figcaption{font-size:.88rem; color:var(--muted)}
 
 /* Game reward mockup */
-.scene{background:url("assets/cmp_village_thinkxl.webp") center/cover; border-radius:24px; padding:3rem 1.25rem 1.5rem; display:grid}
+.scene{background:url("cmp_village_thinkxl.webp") center/cover; border-radius:24px; padding:3rem 1.25rem 1.5rem; display:grid}
 .stage{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:2rem; align-items:center}
 .popup{
   background:var(--plum); border-radius:28px; padding:1.25rem; color:#fff;
@@ -195,9 +195,9 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
   <div class="who"><strong>Maya Melamed</strong><span>CS graduate (HIT, 2026)</span><span>Pilates instructor, two years of teaching</span></div>
 
   <div class="set" aria-label="Final expression set">
-    <figure class="card-art" style="margin:0"><img src="assets/expr_neutral.webp" alt="Chibi character with orange hair, purple headphones and a teal jacket, calm smile"><figcaption class="cap"><b>Neutral</b><span>source</span></figcaption></figure>
-    <figure class="card-art" style="margin:0"><img src="assets/expr_happy.webp" alt="The same character with a happy open smile"><figcaption class="cap"><b>Happy</b><span>brows + mouth</span></figcaption></figure>
-    <figure class="card-art" style="margin:0"><img src="assets/expr_surprised.webp" alt="The same character with raised eyebrows and a round open mouth, surprised"><figcaption class="cap"><b>Surprised</b><span>brows + mouth</span></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="expr_neutral.webp" alt="Chibi character with orange hair, purple headphones and a teal jacket, calm smile"><figcaption class="cap"><b>Neutral</b><span>source</span></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="expr_happy.webp" alt="The same character with a happy open smile"><figcaption class="cap"><b>Happy</b><span>brows + mouth</span></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="expr_surprised.webp" alt="The same character with raised eyebrows and a round open mouth, surprised"><figcaption class="cap"><b>Surprised</b><span>brows + mouth</span></figcaption></figure>
   </div>
   <div class="facts">
     <span class="chip">Model: ThinkDiffusionXL (SDXL)</span>
@@ -214,8 +214,8 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
     <p class="lead">Each map compares an expression with the source image. Black means the pixel is identical; light marks a change. Only the eyebrows and mouth light up, so the character stays exactly on model.</p>
   </div>
   <div class="diffs">
-    <figure class="diff"><img src="assets/diff_happy.webp" alt="Difference map for the happy expression: only eyebrows and mouth are lit"><figcaption>Happy vs. source</figcaption></figure>
-    <figure class="diff"><img src="assets/diff_surprised.webp" alt="Difference map for the surprised expression: only eyebrows and mouth are lit"><figcaption>Surprised vs. source</figcaption></figure>
+    <figure class="diff"><img src="diff_happy.webp" alt="Difference map for the happy expression: only eyebrows and mouth are lit"><figcaption>Happy vs. source</figcaption></figure>
+    <figure class="diff"><img src="diff_surprised.webp" alt="Difference map for the surprised expression: only eyebrows and mouth are lit"><figcaption>Surprised vs. source</figcaption></figure>
   </div>
 </section>
 
@@ -223,12 +223,12 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
   <div class="stage">
     <div class="scene"><div class="popup" role="img" aria-label="Mockup of a game reward screen using the character and icons from this page">
       <div class="ribbon">Level Complete!</div>
-      <div class="hero-char"><img src="assets/expr_happy.webp" alt=""></div>
+      <div class="hero-char"><img src="expr_happy.webp" alt=""></div>
       <div class="rewards">
-        <div class="rw"><div class="disc"><img src="assets/10_icon_coin.webp" alt=""></div><span>+250</span></div>
-        <div class="rw"><div class="disc"><img src="assets/12_icon_gem.webp" alt=""></div><span>+5</span></div>
-        <div class="rw"><div class="disc"><img src="assets/11_icon_chest.webp" alt=""></div><span>x1</span></div>
-        <div class="rw"><div class="disc"><img src="assets/13_icon_crown.webp" alt=""></div><span>VIP</span></div>
+        <div class="rw"><div class="disc"><img src="10_icon_coin.webp" alt=""></div><span>+250</span></div>
+        <div class="rw"><div class="disc"><img src="12_icon_gem.webp" alt=""></div><span>+5</span></div>
+        <div class="rw"><div class="disc"><img src="11_icon_chest.webp" alt=""></div><span>x1</span></div>
+        <div class="rw"><div class="disc"><img src="13_icon_crown.webp" alt=""></div><span>VIP</span></div>
       </div>
       <button class="collect" type="button" tabindex="-1" aria-hidden="true">Collect</button>
     </div></div>
@@ -253,7 +253,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
   </div>
   <ol class="steps">
     <li class="step">
-      <div class="thumbs"><img src="assets/02_character_sheet.webp" alt="Character sheet with 14 poses of the orange-haired character"></div>
+      <div class="thumbs"><img src="02_character_sheet.webp" alt="Character sheet with 14 poses of the orange-haired character"></div>
       <div class="txt">
         <span><span class="tag bad">Problem</span></span>
         <h3>Prompt only: a character sheet</h3>
@@ -262,7 +262,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </div>
     </li>
     <li class="step">
-      <div class="thumbs"><img src="assets/x_style_drift.webp" alt="Character with heavier outlines, purple eyes and ripped jeans"></div>
+      <div class="thumbs"><img src="x_style_drift.webp" alt="Character with heavier outlines, purple eyes and ripped jeans"></div>
       <div class="txt">
         <span><span class="tag bad">Problem</span></span>
         <h3>img2img: colors held, style drifted</h3>
@@ -271,7 +271,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </div>
     </li>
     <li class="step">
-      <div class="thumbs"><img src="assets/workflow_prompts.webp" alt="ComfyUI graph with the positive and negative prompt nodes"></div>
+      <div class="thumbs"><img src="workflow_prompts.webp" alt="ComfyUI graph with the positive and negative prompt nodes"></div>
       <div class="txt">
         <span><span class="tag bad">Root cause</span></span>
         <h3>The graph itself was wrong</h3>
@@ -280,7 +280,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </div>
     </li>
     <li class="step">
-      <div class="thumbs"><img src="assets/x_overweighted.webp" alt="Distorted face with a screaming mouth, teeth and tongue"><img src="assets/x_surprised_purple_eyes.webp" alt="Surprised character with purple eyes instead of brown"></div>
+      <div class="thumbs"><img src="x_overweighted.webp" alt="Distorted face with a screaming mouth, teeth and tongue"><img src="x_surprised_purple_eyes.webp" alt="Surprised character with purple eyes instead of brown"></div>
       <div class="txt">
         <span><span class="tag good">Solution</span></span>
         <h3>Inpaint only the face</h3>
@@ -290,7 +290,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </div>
     </li>
     <li class="step">
-      <div class="thumbs"><img src="assets/diff_surprised.webp" alt="Difference map showing only eyebrows and mouth changed"><img src="assets/x_sad_ai.webp" alt="Sad expression as generated, with new eyes"><img src="assets/x_sad_restored.webp" alt="The same sad expression after restoring the source eyes, which now looks almost happy"></div>
+      <div class="thumbs"><img src="diff_surprised.webp" alt="Difference map showing only eyebrows and mouth changed"><img src="x_sad_ai.webp" alt="Sad expression as generated, with new eyes"><img src="x_sad_restored.webp" alt="The same sad expression after restoring the source eyes, which now looks almost happy"></div>
       <div class="txt">
         <span><span class="tag good">Final method</span></span>
         <h3>Mask only what should move, then composite</h3>
@@ -309,14 +309,14 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
     <p class="lead">One seed and one shared style phrase for every icon; only the object changes. That is what makes four separate generations look like one set.</p>
   </div>
   <div class="icons">
-    <figure class="card-art" style="margin:0"><img src="assets/10_icon_coin.webp" alt="Gold coin with an embossed star"><figcaption class="cap"><b>Coin</b></figcaption></figure>
-    <figure class="card-art" style="margin:0"><img src="assets/11_icon_chest.webp" alt="Open wooden treasure chest full of gold coins"><figcaption class="cap"><b>Chest</b></figcaption></figure>
-    <figure class="card-art" style="margin:0"><img src="assets/12_icon_gem.webp" alt="Faceted blue gem with a flat top"><figcaption class="cap"><b>Gem</b></figcaption></figure>
-    <figure class="card-art" style="margin:0"><img src="assets/13_icon_crown.webp" alt="Gold crown set with blue and red stones"><figcaption class="cap"><b>Crown</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="10_icon_coin.webp" alt="Gold coin with an embossed star"><figcaption class="cap"><b>Coin</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="11_icon_chest.webp" alt="Open wooden treasure chest full of gold coins"><figcaption class="cap"><b>Chest</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="12_icon_gem.webp" alt="Faceted blue gem with a flat top"><figcaption class="cap"><b>Gem</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="13_icon_crown.webp" alt="Gold crown set with blue and red stones"><figcaption class="cap"><b>Crown</b></figcaption></figure>
   </div>
   <div class="params">seed 725758901226107 (fixed) · shared suffix: game icon, casual mobile game style, vibrant colors, soft shading, clean outlines, centered, single object, white background · batch of 4, best one picked</div>
   <div class="small-row">
-    <div class="mini"><img src="assets/x_stars.webp" alt="Four gold stars"><div class="txt"><b>Asked for a coin, got stars</b><p>"Gold coin with a star" made the model fixate on "star". Weighting the main object, <code>(round gold coin:1.4)</code>, and calling the star "small, embossed" fixed it.</p></div></div>
+    <div class="mini"><img src="x_stars.webp" alt="Four gold stars"><div class="txt"><b>Asked for a coin, got stars</b><p>"Gold coin with a star" made the model fixate on "star". Weighting the main object, <code>(round gold coin:1.4)</code>, and calling the star "small, embossed" fixed it.</p></div></div>
 
   </div>
 </section>
@@ -328,9 +328,9 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
     <p class="lead">To choose a model for a new asset type, I held everything constant and changed only the checkpoint. A game background is a good test: it shows how each model handles style, lighting and a busy composition.</p>
   </div>
   <div class="models">
-    <figure class="model"><img src="assets/cmp_village_thinkxl.webp" alt="Village background from ThinkDiffusionXL: flat cartoon style with clean outlines"><figcaption><b>ThinkDiffusionXL</b><span class="verdict good">Best fit for casual games</span><p>Flat colors and clean outlines, the closest match to the character and icons. Clear foreground and background, with room for UI on top.</p></figcaption></figure>
-    <figure class="model"><img src="assets/cmp_village_juggernaut.webp" alt="Village background from Juggernaut XL: detailed village with many houses and a pink sunset sky"><figcaption><b>Juggernaut XL</b><span class="verdict">Richest, but busy</span><p>The most detail and the most convincing village, with real depth. As a game background it competes with the UI and the outlines get thin, so it would need simplifying.</p></figcaption></figure>
-    <figure class="model"><img src="assets/cmp_village_sdxl_base.webp" alt="Village background from SDXL base: painterly, heavy shading, two houses"><figcaption><b>SDXL 1.0 base</b><span class="verdict">Too painterly for this set</span><p>Heavier, near-3D shading and dramatic clouds. It reads as a generic illustration: the outlines are gone and the village shrinks to two houses.</p></figcaption></figure>
+    <figure class="model"><img src="cmp_village_thinkxl.webp" alt="Village background from ThinkDiffusionXL: flat cartoon style with clean outlines"><figcaption><b>ThinkDiffusionXL</b><span class="verdict good">Best fit for casual games</span><p>Flat colors and clean outlines, the closest match to the character and icons. Clear foreground and background, with room for UI on top.</p></figcaption></figure>
+    <figure class="model"><img src="cmp_village_juggernaut.webp" alt="Village background from Juggernaut XL: detailed village with many houses and a pink sunset sky"><figcaption><b>Juggernaut XL</b><span class="verdict">Richest, but busy</span><p>The most detail and the most convincing village, with real depth. As a game background it competes with the UI and the outlines get thin, so it would need simplifying.</p></figcaption></figure>
+    <figure class="model"><img src="cmp_village_sdxl_base.webp" alt="Village background from SDXL base: painterly, heavy shading, two houses"><figcaption><b>SDXL 1.0 base</b><span class="verdict">Too painterly for this set</span><p>Heavier, near-3D shading and dramatic clouds. It reads as a generic illustration: the outlines are gone and the village shrinks to two houses.</p></figcaption></figure>
   </div>
   <div class="params">prompt: cozy fantasy kingdom village, colorful cottages with round roofs, small castle on a hill … casual mobile game background · 1344 × 768 · seed 725758901226107 · steps 25 · cfg 7</div>
   <p class="lesson">For a casual-game pipeline I'd standardize on ThinkDiffusionXL so every asset shares one style, and use Juggernaut for detailed key art or concept exploration.</p>
@@ -350,7 +350,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
     <span class="node">ImageCompositeMasked</span><span class="arrow">→</span>
     <span class="node">Save Image</span>
   </div>
-  <div class="shot"><img src="assets/workflow_inpaint.webp" alt="ComfyUI screenshot of the inpainting workflow with Load Image, VAE Encode and Set Latent Noise Mask nodes"></div>
+  <div class="shot"><img src="workflow_inpaint.webp" alt="ComfyUI screenshot of the inpainting workflow with Load Image, VAE Encode and Set Latent Noise Mask nodes"></div>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Setting</th><th>What I saw</th><th>Use it for</th></tr></thead>
