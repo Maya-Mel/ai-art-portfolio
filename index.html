@@ -146,6 +146,9 @@ th{font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(-
 tr:last-child td{border-bottom:0}
 td.num{font-family:var(--mono); white-space:nowrap; font-variant-numeric:tabular-nums}
 
+/* Tool */
+.tool-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem}
+
 /* Guide */
 .guide{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem}
 .rule{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:1rem 1.1rem; display:grid; gap:.35rem; min-width:0}
@@ -172,7 +175,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
   .step{grid-template-columns:minmax(0,1fr)}
   .step .thumbs{grid-template-columns:repeat(2, minmax(0,1fr))}
   .icons{grid-template-columns:repeat(2, minmax(0,1fr))}
-  .small-row,.guide,.next,.models{grid-template-columns:minmax(0,1fr)}
+  .small-row,.guide,.next,.models,.tool-grid{grid-template-columns:minmax(0,1fr)}
   .diffs{gap:.5rem}
   .diff figcaption{font-size:.75rem}
   .mini{grid-template-columns:84px minmax(0,1fr)}
@@ -193,7 +196,7 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
 <header class="hero">
   <span class="eyebrow">AI art workflow · ComfyUI + SDXL</span>
   <h1>One character, three expressions, one locked design</h1>
-  <p class="lead">I built a ComfyUI workflow that changes a casual-game character's expression and nothing else: the hair, headphones, outfit and eyes stay identical, pixel for pixel. I used the same approach to make a matching set of reward icons. This page shows the results, what went wrong along the way, and how an artist on the team would use it.</p>
+  <p class="lead">I built a ComfyUI workflow that changes a casual-game character's expression and nothing else: the hair, headphones, outfit and eyes stay identical, pixel for pixel. I also made a matching set of reward icons in the same style. This page shows the results, what went wrong along the way, and how an artist on the team would use it.</p>
   <div class="who"><strong>Maya Melamed</strong><span>CS graduate (HIT, 2026)</span><span>Pilates instructor, two years of teaching</span></div>
 
   <div class="set" aria-label="Final expression set">
@@ -366,6 +369,22 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </tbody>
     </table>
   </div>
+</section>
+
+<section aria-labelledby="tool">
+  <div class="sec-head">
+    <span class="eyebrow">A tool for the team</span>
+    <h2 id="tool">Turning the lessons into a prompt builder</h2>
+    <p class="lead">Everything in the case study above is easy to forget on a busy day. So I wrote a block of instructions for Gemini or ChatGPT: an artist types a few words, in Hebrew or English, and gets a ready ComfyUI prompt in the house style, with settings and a checklist.</p>
+  </div>
+  <div class="tool-grid">
+    <div class="rule"><div class="head">Request: "magic potion icon"</div><p>Main object weighted 1.4, details marked "small", the shared icon style, the set's seed, and a check that the bubbles stay readable at small UI sizes.</p></div>
+    <div class="rule"><div class="head">Request: "gold dice"</div><p>Built the prompt, then warned on its own that SDXL cannot count pips, and suggested generating one clean die and adding pips in 2D.</p></div>
+    <div class="rule dont"><div class="head"><span class="mark">✕</span>Test 1: "the character, sleepy"</div><p>It followed my rule too literally: mask only brows and mouth. But sleepy lives in the eyes, so the result would read as calm, not sleepy. My rule only warned about sad and angry.</p></div>
+    <div class="rule do"><div class="head"><span class="mark">✓</span>Test 2: after fixing the rule</div><p>I changed the rule so the tool first decides whether an expression depends on the eyes. It now flags sleepy, includes the eyes in the mask, and names the magenta-pink eye color.</p></div>
+  </div>
+  <div class="params">sleepy, after the fix: (half-closed droopy magenta-pink eyes:1.4), (heavy eyelids:1.3), (low relaxed drooping eyebrows:1.3), (small round yawning mouth:1.4) · mask: eyebrows, eyes and mouth, not the nose</div>
+  <p class="lesson">Test a tool on cases where it should fail, not only where it should work. The instructions are in the repository as <code>prompt_builder_instructions.txt</code>.</p>
 </section>
 
 <section aria-labelledby="guide">
