@@ -64,3 +64,12 @@ Negative: `realistic, photo, dark, gloomy, blurry, text, watermark, people, char
 
 ## Workflow
 `workflow/expression_inpaint.json` – Load Image (+ mask) → VAE Encode → Set Latent Noise Mask → KSampler → VAE Decode → ImageCompositeMasked (onto the source) → Save Image.
+
+How to use it:
+1. Load the approved character in **Load Image** (the file is named `source_character.png` in the workflow).
+2. Right-click the image → **Open in MaskEditor** → paint only the **eyebrows and mouth**. Do not paint the eyes or nose.
+3. Replace the expression part of the positive prompt and the blocked expressions in the negative prompt.
+4. Run a batch of 4 and keep the clearest result.
+
+## How this was made
+I generated every image in ComfyUI and built the workflow above. The final color correction (removing the slight tone shift inside the mask) and restoring the source eyes on the surprised expression were done after export with help from Claude, which also helped build the portfolio page.
