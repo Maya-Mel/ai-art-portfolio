@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maya Melamed AI Art Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single reading column that opens on the finished expression set,
+   then a game reward screen built from the assets, then the process as a
+   numbered case study, the icon set, the workflow, and a guide for artists. */
+:root{
+  --bg:#f6f3fb;        /* lavender-tinted paper, from the headphones */
+  --surface:#ffffff;
+  --tile:#fdfcfa;      /* art always sits on light paper, in both themes */
+  --ink:#231a33;
+  --muted:#62577a;
+  --line:#e3dcef;
+  --teal:#0f9f9a;      /* the jacket */
+  --orange:#e8682c;    /* the hair */
+  --plum:#4b2a6e;      /* game panel */
+  --gold:#f2b632;      /* coins and crown */
+  --good:#1f8a55;
+  --bad:#c23b3b;
+  --display:"Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17121f; --surface:#211a2c; --tile:#fdfcfa; --ink:#f1ecf8; --muted:#b4a9c6;
+    --line:#352b45; --teal:#3cc7c1; --orange:#f2894f; --plum:#5a3486; --gold:#f5c451;
+    --good:#4cc283; --bad:#ef7676; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17121f; --surface:#211a2c; --tile:#fdfcfa; --ink:#f1ecf8; --muted:#b4a9c6;
+  --line:#352b45; --teal:#3cc7c1; --orange:#f2894f; --plum:#5a3486; --gold:#f5c451;
+  --good:#4cc283; --bad:#ef7676; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--body);
+  font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 4rem;
+}
+.wrap{max-width:1040px; margin:0 auto}
+h1,h2,h3{font-family:var(--display); line-height:1.1; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.4rem, 6vw, 4rem); font-weight:800; letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem, 3.6vw, 2.4rem); font-weight:700}
+h3{font-size:1.25rem; font-weight:700}
+p{margin:0; max-width:65ch}
+.eyebrow{font-size:.75rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal)}
+.lead{font-size:1.15rem; color:var(--muted)}
+code,.mono{font-family:var(--mono); font-size:.82em}
+section{padding-block:4rem 0; display:grid; gap:1.5rem}
+.sec-head{display:grid; gap:.6rem}
+
+/* Hero */
+.hero{padding-block:3.5rem 0; display:grid; gap:1.4rem}
+.who{display:flex; flex-wrap:wrap; gap:.5rem 1rem; align-items:baseline; color:var(--muted); font-size:.95rem}
+.who strong{color:var(--ink); font-weight:600}
+.set{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; margin-top:.5rem}
+.card-art{background:var(--tile); border:1px solid var(--line); border-radius:18px; overflow:hidden; display:grid}
+.card-art img{display:block; width:100%; aspect-ratio:1; object-fit:cover}
+.card-art .cap{padding:.7rem .9rem; font-size:.88rem; color:#4a3f5c; background:var(--tile); border-top:1px solid #ece6f3; display:flex; justify-content:space-between; gap:.5rem}
+.card-art .cap b{color:#231a33; font-weight:600}
+.fix-sat{filter:saturate(1.18) contrast(1.03)}
+.facts{display:flex; flex-wrap:wrap; gap:.5rem}
+.chip{font-size:.82rem; padding:.3rem .7rem; border-radius:999px; background:var(--surface); border:1px solid var(--line); color:var(--muted)}
+
+/* Difference maps */
+.diffs{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem; max-width:700px}
+.diff{margin:0; display:grid; gap:.5rem}
+.diff img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:16px; background:#151515; display:block}
+.diff figcaption{font-size:.88rem; color:var(--muted)}
+
+/* Game reward mockup */
+.scene{background:url("cmp_village_thinkxl.webp") center/cover; border-radius:24px; padding:3rem 1.25rem 1.5rem; display:grid}
+.stage{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:2rem; align-items:center}
+.popup{
+  background:var(--plum); border-radius:28px; padding:1.25rem; color:#fff;
+  box-shadow:0 0 0 5px var(--gold), 0 18px 40px rgba(40,15,70,.35);
+  display:grid; gap:1rem; justify-items:center; max-width:440px; width:100%; margin:0 auto;
+}
+.ribbon{font-family:var(--display); font-weight:800; font-size:1.6rem; background:var(--orange); padding:.2rem 1.4rem; border-radius:12px; margin-top:-2.2rem; box-shadow:0 4px 0 #a9471a; letter-spacing:.02em}
+.popup .hero-char{width:62%; aspect-ratio:1; border-radius:50%; background:#fdfcfa; overflow:hidden; border:4px solid var(--gold)}
+.popup .hero-char img{width:100%; height:100%; object-fit:cover; transform:scale(1.18) translateY(4%)}
+.rewards{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.6rem; width:100%}
+.rw{display:grid; justify-items:center; gap:.25rem}
+.rw .disc{width:100%; aspect-ratio:1; border-radius:16px; background:#fdfcfa; display:grid; place-items:center; overflow:hidden}
+.rw .disc img{width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply}
+.rw span{font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--gold)}
+.collect{font-family:var(--display); font-weight:800; font-size:1.3rem; background:var(--teal); color:#fff; border:0; border-radius:14px; padding:.35rem 2.2rem; box-shadow:0 5px 0 #0a6f6b; cursor:default}
+.stage-note{display:grid; gap:.9rem}
+.stage-note ul{margin:0; padding-left:1.1rem; display:grid; gap:.35rem; color:var(--muted)}
+
+/* Case study */
+.steps{list-style:none; margin:0; padding:0; display:grid; gap:1.25rem; counter-reset:step}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:1.25rem; display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:1.25rem; align-items:start; counter-increment:step}
+.step .thumbs{display:grid; gap:.5rem; grid-template-columns:repeat(auto-fit, minmax(90px,1fr))}
+.step .thumbs img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px; background:var(--tile); border:1px solid var(--line)}
+.step .txt{display:grid; gap:.6rem; min-width:0}
+.step h3::before{content:counter(step) ". "; color:var(--orange)}
+.tag{display:inline-block; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.15rem .5rem; border-radius:6px}
+.tag.bad{color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent)}
+.tag.good{color:var(--good); background:color-mix(in srgb, var(--good) 14%, transparent)}
+.lesson{border-left:3px solid var(--teal); padding-left:.8rem; color:var(--ink); font-size:.95rem}
+.params{font-family:var(--mono); font-size:.78rem; color:var(--muted); background:var(--bg); border-radius:8px; padding:.45rem .6rem; overflow-x:auto; white-space:nowrap}
+
+.step .thumbs .tcap{margin:0; display:grid; gap:.25rem}
+.step .thumbs .tcap figcaption{font-size:.75rem; color:var(--muted); text-align:center}
+/* Icons */
+.icons{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1rem}
+.icons .card-art img{padding:6%}
+.small-row{display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; max-width:640px}
+.mini{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1rem; display:grid; grid-template-columns:110px minmax(0,1fr); gap:1rem; align-items:center}
+.mini img{width:110px; aspect-ratio:1; object-fit:cover; border-radius:12px; background:var(--tile)}
+.mini .txt{display:grid; gap:.4rem; min-width:0; font-size:.95rem}
+
+/* Model comparison */
+.models{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem}
+.model{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; display:grid; grid-template-rows:auto 1fr}
+.model img{width:100%; aspect-ratio:1344/768; object-fit:cover; display:block}
+.model figcaption{padding:.9rem 1rem 1rem; display:grid; gap:.4rem; align-content:start}
+.model figcaption p{font-size:.92rem; color:var(--muted)}
+.verdict{font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.verdict.good{color:var(--good)}
+
+/* Workflow */
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; font-family:var(--mono); font-size:.8rem}
+.flow .node{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:.35rem .6rem}
+.flow .arrow{color:var(--muted)}
+.shot{border-radius:16px; border:1px solid var(--line); overflow:hidden; background:#1e1e24}
+.shot img{display:block; width:100%}
+.table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.92rem; min-width:560px}
+th,td{text-align:left; padding:.65rem .9rem; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono); white-space:nowrap; font-variant-numeric:tabular-nums}
+
+/* Guide */
+.guide{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem}
+.rule{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:1rem 1.1rem; display:grid; gap:.35rem; min-width:0}
+.rule .head{display:flex; gap:.5rem; align-items:center; font-weight:600}
+.rule p{color:var(--muted); font-size:.93rem}
+.rule.do .mark{color:var(--good)}
+.rule.dont .mark{color:var(--bad)}
+.mark{font-family:var(--display); font-weight:800; font-size:1.2rem; line-height:1}
+
+.next{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem}
+.next .rule p{color:var(--muted)}
+
+footer{margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:.6rem 1.5rem; color:var(--muted); font-size:.95rem}
+footer a{color:var(--teal)}
+footer .sel{user-select:all; color:var(--ink)}
+footer .made{flex-basis:100%; font-size:.88rem}
+
+a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius:4px}
+
+@media (max-width:760px){
+  .set{grid-template-columns:repeat(3, minmax(0,1fr)); gap:.5rem}
+  .card-art .cap{font-size:.75rem; padding:.45rem .5rem; flex-direction:column; gap:0}
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .step{grid-template-columns:minmax(0,1fr)}
+  .step .thumbs{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .icons{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .small-row,.guide,.next,.models{grid-template-columns:minmax(0,1fr)}
+  .diffs{gap:.5rem}
+  .diff figcaption{font-size:.75rem}
+  .mini{grid-template-columns:84px minmax(0,1fr)}
+  .mini img{width:84px}
+}
+@media (prefers-reduced-motion: no-preference){
+  .collect{transition:transform .15s}
+  .popup:hover .collect{transform:translateY(-2px)}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">AI art workflow · ComfyUI + SDXL</span>
+  <h1>One character, three expressions, one locked design</h1>
+  <p class="lead">I built a ComfyUI workflow that changes a casual-game character's expression and nothing else: the hair, headphones, outfit and eyes stay identical, pixel for pixel. I used the same approach to make a matching set of reward icons. This page shows the results, what went wrong along the way, and how an artist on the team would use it.</p>
+  <div class="who"><strong>Maya Melamed</strong><span>CS graduate (HIT, 2026)</span><span>Pilates instructor, two years of teaching</span></div>
+
+  <div class="set" aria-label="Final expression set">
+    <figure class="card-art" style="margin:0"><img src="expr_neutral.webp" alt="Chibi character with orange hair, purple headphones and a teal jacket, calm smile"><figcaption class="cap"><b>Neutral</b><span>source</span></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="expr_happy.webp" alt="The same character with a happy open smile"><figcaption class="cap"><b>Happy</b><span>brows + mouth</span></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="expr_surprised.webp" alt="The same character with raised eyebrows and a round open mouth, surprised"><figcaption class="cap"><b>Surprised</b><span>brows + mouth</span></figcaption></figure>
+  </div>
+  <div class="facts">
+    <span class="chip">Model: ThinkDiffusionXL (SDXL)</span>
+    <span class="chip">Text-to-image, img2img, inpainting</span>
+    <span class="chip">Fixed seeds, logged for every final</span>
+    <span class="chip">Under 1% of pixels change per expression</span>
+  </div>
+</header>
+
+<section aria-labelledby="proof">
+  <div class="sec-head">
+    <span class="eyebrow">Proof of consistency</span>
+    <h2 id="proof">What actually changed</h2>
+    <p class="lead">Each map compares an expression with the source image. Black means the pixel is identical; light marks a change. Only the eyebrows and mouth light up, so the character stays exactly on model.</p>
+  </div>
+  <div class="diffs">
+    <figure class="diff"><img src="diff_happy.webp" alt="Difference map for the happy expression: only eyebrows and mouth are lit"><figcaption>Happy vs. source</figcaption></figure>
+    <figure class="diff"><img src="diff_surprised.webp" alt="Difference map for the surprised expression: only eyebrows and mouth are lit"><figcaption>Surprised vs. source</figcaption></figure>
+  </div>
+</section>
+
+<section aria-labelledby="ingame">
+  <div class="stage">
+    <div class="scene"><div class="popup" role="img" aria-label="Mockup of a game reward screen using the character and icons from this page">
+      <div class="ribbon">Level Complete!</div>
+      <div class="hero-char"><img src="expr_happy.webp" alt=""></div>
+      <div class="rewards">
+        <div class="rw"><div class="disc"><img src="10_icon_coin.webp" alt=""></div><span>+250</span></div>
+        <div class="rw"><div class="disc"><img src="12_icon_gem.webp" alt=""></div><span>+5</span></div>
+        <div class="rw"><div class="disc"><img src="11_icon_chest.webp" alt=""></div><span>x1</span></div>
+        <div class="rw"><div class="disc"><img src="13_icon_crown.webp" alt=""></div><span>VIP</span></div>
+      </div>
+      <button class="collect" type="button" tabindex="-1" aria-hidden="true">Collect</button>
+    </div></div>
+    <div class="stage-note">
+      <span class="eyebrow">In context</span>
+      <h2 id="ingame">The assets on a reward screen</h2>
+      <p>Assets are only useful if they work together. I placed the happy expression and the four icons on a mock reward popup to check that the set reads as one game: same line weight, same soft shading, same palette.</p>
+      <ul>
+        <li>Gold in the coin, chest and crown matches.</li>
+        <li>The gem's blue repeats in the crown's stones.</li>
+        <li>Icons are picked for how clearly they read at small sizes, not only at full size.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="case">
+  <div class="sec-head">
+    <span class="eyebrow">Case study</span>
+    <h2 id="case">Getting from a prompt to a consistent character</h2>
+    <p class="lead">Each attempt fixed one problem and exposed the next. These are the real steps, in order.</p>
+  </div>
+  <ol class="steps">
+    <li class="step">
+      <div class="thumbs"><img src="02_character_sheet.webp" alt="Character sheet with 14 poses of the orange-haired character"></div>
+      <div class="txt">
+        <span><span class="tag bad">Problem</span></span>
+        <h3>Prompt only: a character sheet</h3>
+        <p>Asking for "the same character in multiple poses" gave a recognizable character, but details changed from pose to pose: headphone color switched between teal and purple, one pose grew a long ponytail, and the white sneakers came out purple.</p>
+        <p class="lesson">A detailed prompt alone does not lock a design. Text describes a character; it does not remember one.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="thumbs"><img src="x_style_drift.webp" alt="Character with heavier outlines, purple eyes and ripped jeans"></div>
+      <div class="txt">
+        <span><span class="tag bad">Problem</span></span>
+        <h3>img2img: colors held, style drifted</h3>
+        <p>Starting from the approved image (img2img, denoise 0.6) kept the colors far better. But at 0.75 and above the outlines got heavier, the eyes turned purple and the jeans tore. Re-running img2img on its own output made it worse each time, like a photocopy of a photocopy.</p>
+        <p class="lesson">Pick one approved image and generate every variant from it. Never chain img2img on generated output.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="thumbs"><img src="workflow_prompts.webp" alt="ComfyUI graph with the positive and negative prompt nodes"></div>
+      <div class="txt">
+        <span><span class="tag bad">Root cause</span></span>
+        <h3>The graph itself was wrong</h3>
+        <p>The grainy texture had a mechanical cause. The negative prompt node had been deleted, and the positive prompt had grown into several prompts pasted end to end. Rebuilding a clean positive prompt and a separate negative node brought the clean style back immediately.</p>
+        <p class="lesson">Before every run, check that positive and negative come from two different nodes, and replace prompt text instead of appending to it.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="thumbs"><figure class="tcap"><img src="x_overweighted.webp" alt="Distorted face with a screaming mouth, teeth and tongue"><figcaption>Weight 1.5</figcaption></figure><figure class="tcap"><img src="x_surprised_purple_eyes.webp" alt="Surprised character whose eye color changed"><figcaption>Eye color changed</figcaption></figure></div>
+      <div class="txt">
+        <span><span class="tag good">Solution</span></span>
+        <h3>Inpaint only the face</h3>
+        <p>With the style stable, img2img at 0.6 barely changed the expression. Masking just the face and inpainting at denoise 0.85 changed the expression and left everything else untouched. Two last issues: weights of 1.5 on "gaping mouth" produced a monster, and the eye color changed, because the mask covered the eyes and the prompt never named their color. A second, eyes-only mask fixed it.</p>
+        <div class="params">surprised: (cute surprised expression:1.3), (small round O-shaped mouth:1.3), gasp · negative: (smile:1.3), (grin:1.3), missing nose · denoise 0.85</div>
+        <p class="lesson">Keep weights at 1.2–1.3 and name everything inside the mask, including eye color. To fix one detail, mask only that detail.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="thumbs"><figure class="tcap"><img src="x_sad_ai.webp" alt="Sad expression as generated, with new eyes"><figcaption>Generated</figcaption></figure><figure class="tcap"><img src="x_sad_restored.webp" alt="The same sad expression after restoring the source eyes, which now looks almost happy"><figcaption>Eyes restored</figcaption></figure></div>
+      <div class="txt">
+        <span><span class="tag good">Final method</span></span>
+        <h3>Mask only what should move, then composite</h3>
+        <p>Side by side, the inpainted faces still did not match: whatever the mask covered, the model redrew, so the eyes came back a different color and the nose changed shape. The fix was to mask only the eyebrows and mouth, which carry the expression, and leave the eyes and nose outside the mask. An ImageCompositeMasked node then pastes the new region back onto the untouched source, and a color match removes the slight tone shift that VAE decoding adds. Where the mask grazed the eyes in the surprised run, I pasted the source eyes back the same way. That also taught me a limit: the sad face lost its sadness once the original, cheerful eyes went back in, because much of a sad expression lives in the eyes. I left it out of the set.</p>
+        <div class="params">mask: eyebrows + mouth only · inpaint denoise 0.85 · ImageCompositeMasked onto source · color match to source</div>
+        <p class="lesson">Don't mask anything that must stay the same. Angry was the exception: its brows drop into the eyes, so the mask has to touch them. That needs a second pass to restore the eyes.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section aria-labelledby="icons">
+  <div class="sec-head">
+    <span class="eyebrow">Game assets</span>
+    <h2 id="icons">A matching reward icon set</h2>
+    <p class="lead">One seed and one shared style phrase for every icon; only the object changes. That is what makes four separate generations look like one set.</p>
+  </div>
+  <div class="icons">
+    <figure class="card-art" style="margin:0"><img src="10_icon_coin.webp" alt="Gold coin with an embossed star"><figcaption class="cap"><b>Coin</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="11_icon_chest.webp" alt="Open wooden treasure chest full of gold coins"><figcaption class="cap"><b>Chest</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="12_icon_gem.webp" alt="Faceted blue gem with a flat top"><figcaption class="cap"><b>Gem</b></figcaption></figure>
+    <figure class="card-art" style="margin:0"><img src="13_icon_crown.webp" alt="Gold crown set with blue and red stones"><figcaption class="cap"><b>Crown</b></figcaption></figure>
+  </div>
+  <div class="params">seed 725758901226107 (fixed) · shared suffix: game icon, casual mobile game style, vibrant colors, soft shading, clean outlines, centered, single object, white background · batch of 4, best one picked</div>
+  <div class="small-row">
+    <div class="mini"><img src="x_stars.webp" alt="Four gold stars"><div class="txt"><b>Asked for a coin, got stars</b><p>"Gold coin with a star" made the model fixate on "star". Weighting the main object, <code>(round gold coin:1.4)</code>, and calling the star "small, embossed" fixed it.</p></div></div>
+
+  </div>
+</section>
+
+<section aria-labelledby="models">
+  <div class="sec-head">
+    <span class="eyebrow">Testing models</span>
+    <h2 id="models">Same prompt, same seed, three models</h2>
+    <p class="lead">To choose a model for a new asset type, I held everything constant and changed only the checkpoint. A game background is a good test: it shows how each model handles style, lighting and a busy composition.</p>
+  </div>
+  <div class="models">
+    <figure class="model"><img src="cmp_village_thinkxl.webp" alt="Village background from ThinkDiffusionXL: flat cartoon style with clean outlines"><figcaption><b>ThinkDiffusionXL</b><span class="verdict good">Best fit for casual games</span><p>Flat colors and clean outlines, the closest match to the character and icons. Clear foreground and background, with room for UI on top.</p></figcaption></figure>
+    <figure class="model"><img src="cmp_village_juggernaut.webp" alt="Village background from Juggernaut XL: detailed village with many houses and a pink sunset sky"><figcaption><b>Juggernaut XL</b><span class="verdict">Richest, but busy</span><p>The most detail and the most convincing village, with real depth. As a game background it competes with the UI and the outlines get thin, so it would need simplifying.</p></figcaption></figure>
+    <figure class="model"><img src="cmp_village_sdxl_base.webp" alt="Village background from SDXL base: painterly, heavy shading, two houses"><figcaption><b>SDXL 1.0 base</b><span class="verdict">Too painterly for this set</span><p>Heavier, near-3D shading and dramatic clouds. It reads as a generic illustration: the outlines are gone and the village shrinks to two houses.</p></figcaption></figure>
+  </div>
+  <div class="params">prompt: cozy fantasy kingdom village, colorful cottages with round roofs, small castle on a hill … casual mobile game background · 1344 × 768 · seed 725758901226107 · steps 25 · cfg 7</div>
+  <p class="lesson">For a casual-game pipeline I'd standardize on ThinkDiffusionXL so every asset shares one style, and use Juggernaut for detailed key art or concept exploration.</p>
+</section>
+
+<section aria-labelledby="workflow">
+  <div class="sec-head">
+    <span class="eyebrow">The workflow</span>
+    <h2 id="workflow">How the inpainting graph is wired</h2>
+  </div>
+  <div class="flow" aria-label="Node chain">
+    <span class="node">Load Image + mask</span><span class="arrow">→</span>
+    <span class="node">VAE Encode</span><span class="arrow">→</span>
+    <span class="node">Set Latent Noise Mask</span><span class="arrow">→</span>
+    <span class="node">KSampler</span><span class="arrow">→</span>
+    <span class="node">VAE Decode</span><span class="arrow">→</span>
+    <span class="node">ImageCompositeMasked</span><span class="arrow">→</span>
+    <span class="node">Save Image</span>
+  </div>
+  <div class="shot"><img src="workflow_inpaint.webp" alt="ComfyUI screenshot of the inpainting workflow with Load Image, VAE Encode and Set Latent Noise Mask nodes"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Setting</th><th>What I saw</th><th>Use it for</th></tr></thead>
+      <tbody>
+        <tr><td class="num">img2img 0.6</td><td>Colors and pose kept; expression barely moves</td><td>Small, global changes</td></tr>
+        <tr><td class="num">img2img 0.75–0.8</td><td>Mouth changes, but style starts to drift</td><td>Avoid for expression sets</td></tr>
+        <tr><td class="num">inpaint 0.85</td><td>Face changes, rest of the image untouched</td><td>Expressions</td></tr>
+        <tr><td class="num">inpaint 0.9–0.95</td><td>Face redrawn from scratch, no longer fits the body</td><td>Avoid</td></tr>
+        <tr><td class="num">inpaint 0.6, small mask</td><td>Only the masked detail changes</td><td>Color fixes such as eye color</td></tr>
+        <tr><td class="num">brows + mouth mask, 0.85</td><td>Expression changes; eyes and nose stay identical</td><td>Final expression set</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="guide">
+  <div class="sec-head">
+    <span class="eyebrow">For artists</span>
+    <h2 id="guide">Quick guide to using this workflow</h2>
+    <p class="lead">What I would hand an artist on day one, written from the mistakes above.</p>
+  </div>
+  <div class="guide">
+    <div class="rule do"><div class="head"><span class="mark">✓</span>Start from one approved image</div><p>Load the signed-off character and generate every variant from it.</p></div>
+    <div class="rule do"><div class="head"><span class="mark">✓</span>Mask only the brows and mouth</div><p>They carry the expression. Leave eyes and nose outside the mask so they stay identical. Denoise 0.85, batch of 4.</p></div>
+    <div class="rule do"><div class="head"><span class="mark">✓</span>Name what is inside the mask</div><p>Eye color, nose, mouth shape. Anything unnamed, the model invents.</p></div>
+    <div class="rule do"><div class="head"><span class="mark">✓</span>Log the seed of every final</div><p>A fixed seed plus the same prompt reproduces the image exactly.</p></div>
+    <div class="rule dont"><div class="head"><span class="mark">✕</span>Don't raise denoise to force an expression</div><p>It changes the style before it changes the face. Use prompt weights and a negative prompt.</p></div>
+    <div class="rule dont"><div class="head"><span class="mark">✕</span>Don't push weights above 1.3</div><p>Strong weights exaggerate: a surprised face becomes a scream.</p></div>
+    <div class="rule dont"><div class="head"><span class="mark">✕</span>Don't trust the model to count</div><p>Dice pips, fingers, repeated stones. Check them at full size before shipping.</p></div>
+    <div class="rule dont"><div class="head"><span class="mark">✕</span>Don't append to a prompt box</div><p>Select all and replace. Old phrases left behind pull the image off style.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="next">
+  <div class="sec-head">
+    <span class="eyebrow">Next steps</span>
+    <h2 id="next">What I would build next</h2>
+  </div>
+  <div class="next">
+    <div class="rule"><div class="head">Train a LoRA on the character</div><p>Use the approved images as a dataset so any artist can call the character by name, in any pose.</p></div>
+    <div class="rule"><div class="head">Add ControlNet for poses</div><p>img2img and inpainting keep the pose. ControlNet would allow new poses without losing the design.</p></div>
+    <div class="rule"><div class="head">Style reference with IP-Adapter</div><p>Feed an existing game asset as a style reference so new icons match the live art directly.</p></div>
+  </div>
+</section>
+
+<footer>
+  <span><strong>Maya Melamed</strong></span>
+  <span class="sel">Mayamelamed20@gmail.com</span>
+  <a href="https://www.linkedin.com/in/maya-melamed-0838b63a3/" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://github.com/Maya-Mel" target="_blank" rel="noopener">GitHub</a>
+  <span class="made">How this was made: I generated every image in ComfyUI and built the workflow. The final color correction and this page were made with help from Claude.</span>
+</footer>
+
+</div>
+
+</body>
+</html>
