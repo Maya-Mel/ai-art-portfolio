@@ -114,6 +114,8 @@ section{padding-block:4rem 0; display:grid; gap:1.5rem}
 .lesson{border-left:3px solid var(--teal); padding-left:.8rem; color:var(--ink); font-size:.95rem}
 .params{font-family:var(--mono); font-size:.78rem; color:var(--muted); background:var(--bg); border-radius:8px; padding:.45rem .6rem; overflow-x:auto; white-space:nowrap}
 
+.step .thumbs .tcap{margin:0; display:grid; gap:.25rem}
+.step .thumbs .tcap figcaption{font-size:.75rem; color:var(--muted); text-align:center}
 /* Icons */
 .icons{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1rem}
 .icons .card-art img{padding:6%}
@@ -290,11 +292,11 @@ a:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius
       </div>
     </li>
     <li class="step">
-      <div class="thumbs"><img src="diff_surprised.webp" alt="Difference map showing only eyebrows and mouth changed"><img src="x_sad_ai.webp" alt="Sad expression as generated, with new eyes"><img src="x_sad_restored.webp" alt="The same sad expression after restoring the source eyes, which now looks almost happy"></div>
+      <div class="thumbs"><figure class="tcap"><img src="x_sad_ai.webp" alt="Sad expression as generated, with new eyes"><figcaption>Sad, as generated</figcaption></figure><figure class="tcap"><img src="x_sad_restored.webp" alt="The same sad expression after restoring the source eyes, which now looks almost happy"><figcaption>Source eyes restored</figcaption></figure></div>
       <div class="txt">
         <span><span class="tag good">Final method</span></span>
         <h3>Mask only what should move, then composite</h3>
-        <p>Side by side, the inpainted faces still did not match: whatever the mask covered, the model redrew, so the eyes came back a different color and the nose changed shape. The fix was to mask only the eyebrows and mouth, which carry the expression, and leave the eyes and nose outside the mask. An ImageCompositeMasked node then pastes the new region back onto the untouched source, and a color match removes the slight tone shift that VAE decoding adds. Where the mask grazed the eyes in the surprised run, I pasted the source eyes back the same way. That also taught me a limit: the sad face (left) lost its sadness once the original, cheerful eyes went back in (right), because much of a sad expression lives in the eyes. I left it out of the set.</p>
+        <p>Side by side, the inpainted faces still did not match: whatever the mask covered, the model redrew, so the eyes came back a different color and the nose changed shape. The fix was to mask only the eyebrows and mouth, which carry the expression, and leave the eyes and nose outside the mask. An ImageCompositeMasked node then pastes the new region back onto the untouched source, and a color match removes the slight tone shift that VAE decoding adds. Where the mask grazed the eyes in the surprised run, I pasted the source eyes back the same way. That also taught me a limit: the sad face lost its sadness once the original, cheerful eyes went back in, because much of a sad expression lives in the eyes. I left it out of the set.</p>
         <div class="params">mask: eyebrows + mouth only · inpaint denoise 0.85 · ImageCompositeMasked onto source · color match to source</div>
         <p class="lesson">Don't mask anything that must stay the same. Angry was the exception: its brows drop into the eyes, so the mask has to touch them. That needs a second pass to restore the eyes.</p>
       </div>
